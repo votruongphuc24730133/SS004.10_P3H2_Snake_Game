@@ -1,3 +1,5 @@
+#include <food.h> // Thư viện ăn-mồi
+//------//
 #include <iostream>
 #include <windows.h>
 #include <cstdlib>
@@ -37,6 +39,7 @@ public:
 int main()
 {
     CONRAN r;
+    food f; // thêm mồi
     int Huong = 0;
     char t;
 
@@ -49,7 +52,15 @@ int main()
             if (t=='x') Huong = 1;
         }
         system("cls");
+        f.draw() // Vẽ mồi
         r.Ve();
+
+        if (r.A[0].x == f.moi.x && r.A[0].y == f.moi.y) {
+            r.DoDai++;  // tăng độ dài 
+            f.spawn();  // thêm lại mồi
+        }
+        
+
         r.DiChuyen(Huong);
         Sleep(300);
     }
