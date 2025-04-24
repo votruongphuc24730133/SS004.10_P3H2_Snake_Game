@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <cstdlib>
 #include <conio.h>
+#include <time.h>
 #define MINX 2
 #define MINY 2
 #define MAXX 35
@@ -26,9 +27,9 @@ public:
             gotoxy(A[i].x,A[i].y);
             cout<<"X";
         }
-    }
-    gotoxy(Qua.x, Qua.y) ; cout << "*";
 
+        gotoxy(Qua.x, Qua.y) ; cout << "*";
+    }
 
     void DiChuyen(int Huong, Point& Qua){
         for (int i = DoDai-1; i>0;i--)
