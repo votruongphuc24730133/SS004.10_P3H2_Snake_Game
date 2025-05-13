@@ -90,16 +90,16 @@ int main() {
             t = getch();
             if (t == -32 || t == 224) { // Phím mũi tên
                 t = getch();
-                if (t == 75) Huong = 2; // Trái
+                if (t == 75 ) Huong = 2; // Trái
                 if (t == 72) Huong = 3; // Lên
                 if (t == 77) Huong = 0; // Phải
                 if (t == 80) Huong = 1; // Xuống
             } else {
                 // Phím thường
-                if (t == 'a') Huong = 2;
-                if (t == 'w') Huong = 3;
-                if (t == 'd') Huong = 0;
-                if (t == 'x') Huong = 1;
+                if (t == 'a' || t == 'A') Huong = 2;
+                if (t == 'w' || t == 'W') Huong = 3;
+                if (t == 'd' || t == 'D') Huong = 0;
+                if (t == 's' || t == 'S') Huong = 1;
             }
         }
 
