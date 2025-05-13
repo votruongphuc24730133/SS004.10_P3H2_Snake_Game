@@ -67,13 +67,22 @@ int main()
     Qua.y = rand()%(MAXY-MINY)+MINY;
 
     while (1){
-        if (kbhit()){
+        if (kbhit()) {
             t = getch();
-            if (t=='a') Huong = 2;
-            if (t=='w') Huong = 3;
-            if (t=='d') Huong = 0;
-            if (t=='x') Huong = 1;
+            if (t == -32 || t == 224) { // Phím mũi tên
+                t = getch(); // Lấy mã phím thực
+                if (t == 75) Huong = 2;  // Trái
+                if (t == 72) Huong = 3;  // Lên
+                if (t == 77) Huong = 0;  // Phải
+                if (t == 80) Huong = 1;  // Xuống
+            } else { // Phím thường
+                if (t == 'a') Huong = 2;
+                if (t == 'w') Huong = 3;
+                if (t == 'd') Huong = 0;
+                if (t == 'x') Huong = 1;
+            }
         }
+
         system("cls");
         r.Ve(Qua);
         r.DiChuyen(Huong,Qua);
