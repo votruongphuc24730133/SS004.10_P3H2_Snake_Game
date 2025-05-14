@@ -56,8 +56,8 @@ public:
         // Ăn quả
         if (A[0].x == Qua.x && A[0].y == Qua.y) {
             DoDai++;
-            Qua.x = rand() % (MAXX - MINX) + MINX;
-            Qua.y = rand() % (MAXY - MINY) + MINY;
+            Qua.x = rand() % (MAXX - MINX-4) + MINX+2;              //Vị trí random sẽ nằm trong khung. và cách khung ít nhất 1 dòng (cột). 
+            Qua.y = rand() % (MAXY - MINY-4) + MINY+2;
         }
     }
 };
