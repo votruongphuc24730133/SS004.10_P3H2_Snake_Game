@@ -88,7 +88,7 @@ int main() {
     srand((int)time(0));
     Qua.x = rand() % (MAXX - MINX) + MINX;
     Qua.y = rand() % (MAXY - MINY) + MINY;
-
+    VeKhung();               //đặt hàm vẽ khung ra ngoài vòng lặp While(1), chỉ vẽ khung 1 lần duy nhất.
     while (1) {
         if (kbhit()) {
             t = getch();
@@ -107,10 +107,16 @@ int main() {
             }
         }
 
-        system("cls");
-        r.Ve(Qua);
-        r.DiChuyen(Huong, Qua);
-        VeKhung();
+        for (int i = 0; i < r.DoDai; i++)           // xóa rắn bằng cách thay thế thành ký tự khoảng trắng " " 
+        {
+            gotoxy(r.A[i].x, r.A[i].y);
+            cout << " "; 
+        }
+        
+        r.DiChuyen(Huong, Qua);                       //đổi thử tự chạy hàm, cho hàm di chuyển chạy trước, vẽ chạy sau.
+        r.Ve(Qua);                                 // nếu để hàm vẽ chạy trước, sau khi xóa thân rắn, hàm vẽ nó lại vẽ lại toàn bộ những thứ đã xóa (giá trị cũ) . rồi hàm di chuyển tịnh tiến toàn bộ, nên con rắn đi để lại cái đuôi kéo dài.  
+        
+        
 
         if (RanDungTuong(r.A[0])) {
             gotoxy(10, MAXY + 2);
