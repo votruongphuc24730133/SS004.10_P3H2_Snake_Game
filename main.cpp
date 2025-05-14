@@ -74,6 +74,10 @@ void VeKhung() {
     }
 }
 
+bool RanDungTuong(const Point& dauRan) {
+    return (dauRan.x <= MINX || dauRan.x >= MAXX || dauRan.y <= MINY || dauRan.y >= MAXY);
+}
+
 // Hàm chính
 int main() {
     CONRAN r;
@@ -107,6 +111,13 @@ int main() {
         r.Ve(Qua);
         r.DiChuyen(Huong, Qua);
         VeKhung();
+
+        if (RanDungTuong(r.A[0])) {
+            gotoxy(10, MAXY + 2);
+            cout << "Game Over! Ran da dung tuong.";
+            break;
+        }
+        
         Sleep(300);
     }
 
