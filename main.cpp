@@ -39,6 +39,8 @@ public:
 
         gotoxy(Qua.x, Qua.y);
         cout << "*";
+        gotoxy(15,1);                                   
+        cout<<"DIEM : "<<DoDai-3;                   //Hiển thị điểm số người chơi = độ dài hiện tại - độ dài ban đầu.
     }
 
     void DiChuyen(int Huong, Point& Qua) {
