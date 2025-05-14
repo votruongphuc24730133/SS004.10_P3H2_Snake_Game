@@ -123,6 +123,25 @@ int main() {
 
     return 0;
 }
+//chan ran di lui
+if (kbhit())
+        {
+            int HuongCu = Huong;        
+            t = getch();
+    if (t == -32 || t == 224) { // Phím mũi tên
+    t = getch(); // Lấy mã phím thực
+    if (t == 75) Huong = 2; // Trái
+    if (t == 72) Huong = 3; // Lên
+    if (t == 77) Huong = 0; // Phải
+    if (t == 80) Huong = 1; // Xuống
+    } else { // Phím thường
+    if (t == 'a' )  Huong = 2;
+    if (t == 'w' ) Huong = 3;
+    if (t == 'd' ) Huong = 0;
+    if (t == 's' ) Huong = 1;
+        }
+        if ( abs(HuongCu-Huong)==2 ) Huong = HuongCu;
+        }
 
 // Đặt vị trí con trỏ trong console
 void gotoxy(int column, int line) {
