@@ -84,6 +84,8 @@ int main() {
     int Huong = 0;
     char t;
     Point Qua;
+    bool pause = false;
+
 
     srand((int)time(0));
     Qua.x = rand() % (MAXX - MINX) + MINX;
@@ -104,20 +106,26 @@ int main() {
                 if (t == 'w' || t == 'W') Huong = 3;
                 if (t == 'd' || t == 'D') Huong = 0;
                 if (t == 's' || t == 'S') Huong = 1;
+                if (t == 'p' || t == 'P') pause = !pause; 
             }
         }
 
-        system("cls");
-        r.Ve(Qua);
-        r.DiChuyen(Huong, Qua);
-        VeKhung();
+        if (!pause) {
+    system("cls");
+    r.Ve(Qua);
+    r.DiChuyen(Huong, Qua);
+    VeKhung();
 
-        if (RanDungTuong(r.A[0])) {
-            gotoxy(10, MAXY + 2);
-            cout << "Game Over! Ran da dung tuong.";
-            break;
-        }
-        
+    if (RanDungTuong(r.A[0])) {
+        gotoxy(10, MAXY + 2);
+        cout << "Game Over! Ran da dung tuong.";
+        break;
+    }
+} else {
+    gotoxy(10, MAXY + 2);
+    cout << "TAM DUNG - Nhan 'P' de tiep tuc.";
+}
+
         Sleep(300);
     }
 
