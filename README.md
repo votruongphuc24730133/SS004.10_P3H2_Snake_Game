@@ -9,8 +9,8 @@ Dự án Snake Game của nhóm P3H2 cho đồ án cuối kỳ môn Kỹ năng n
 - Phạm Văn Hiếu (24730097)
 - Phạm Đức Hải (24730095)
 
-## Giảng viên
-ThS. Nguyễn Văn Toàn
+## Giảng viên: ThS. Nguyễn Văn Toàn
+
 =======
 ## 🎮 Hướng dẫn chơi
 
