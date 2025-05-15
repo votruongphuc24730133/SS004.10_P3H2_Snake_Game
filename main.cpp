@@ -99,20 +99,25 @@ int main() {
     VeKhung();               //đặt hàm vẽ khung ra ngoài vòng lặp While(1), chỉ vẽ khung 1 lần duy nhất.
     while (1) {
         if (kbhit()) {
+            int HuongCu = Huong;
             t = getch();
+
             if (t == -32 || t == 224) { // Phím mũi tên
-                t = getch();
-                if (t == 75 ) Huong = 2; // Trái
+                t = getch(); // Lấy mã phím thực
+                if (t == 75) Huong = 2; // Trái
                 if (t == 72) Huong = 3; // Lên
                 if (t == 77) Huong = 0; // Phải
                 if (t == 80) Huong = 1; // Xuống
-            } else {
-                // Phím thường
-                if (t == 'a' || t == 'A') Huong = 2;
-                if (t == 'w' || t == 'W') Huong = 3;
-                if (t == 'd' || t == 'D') Huong = 0;
-                if (t == 's' || t == 'S') Huong = 1;
+            } else { // Phím thường
+                if (t == 'a') Huong = 2;
+                if (t == 'w') Huong = 3;
+                if (t == 'd') Huong = 0;
+                if (t == 's') Huong = 1;
             }
+
+            // Ngăn không cho quay ngược đầu
+            if (abs(HuongCu - Huong) == 2)
+                Huong = HuongCu;
         }
 
 
@@ -125,7 +130,8 @@ int main() {
         r.DiChuyen(Huong, Qua);                       //đổi thử tự chạy hàm, cho hàm di chuyển chạy trước, vẽ chạy sau.
         r.Ve(Qua);                                 // nếu để hàm vẽ chạy trước, sau khi xóa thân rắn, hàm vẽ nó lại vẽ lại toàn bộ những thứ đã xóa (giá trị cũ) . rồi hàm di chuyển tịnh tiến toàn bộ, nên con rắn đi để lại cái đuôi kéo dài.  
         
-        
+
+
 
 
         if (RanDungTuong(r.A[0])) {
