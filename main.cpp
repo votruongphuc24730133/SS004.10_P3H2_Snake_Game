@@ -32,13 +32,23 @@ public:
     }
 
     void Ve(Point Qua) {
-        for (int i = 0; i < DoDai; i++) {
+        // Vẽ đầu rắn
+        gotoxy(A[0].x, A[0].y);
+        cout << "O";  // Dùng ký tự O để làm đầu rắn
+    
+        // Vẽ thân rắn
+        for (int i = 1; i < DoDai; i++) {
             gotoxy(A[i].x, A[i].y);
-            cout << "X";
+            cout << "x";  // Ký tự cho thân rắn
         }
-
+    
+        // Vẽ quả
         gotoxy(Qua.x, Qua.y);
         cout << "*";
+    
+        // Ghi điểm ở góc
+        gotoxy(1, 1);
+        cout << "Diem: " << DoDai - 3;
     }
 
     void DiChuyen(int Huong, Point& Qua) {
