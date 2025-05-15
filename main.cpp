@@ -35,17 +35,17 @@ public:
         // Vẽ đầu rắn
         gotoxy(A[0].x, A[0].y);
         cout << "O";  // Dùng ký tự O để làm đầu rắn
-    
+
         // Vẽ thân rắn
         for (int i = 1; i < DoDai; i++) {
             gotoxy(A[i].x, A[i].y);
             cout << "x";  // Ký tự cho thân rắn
         }
-    
+
         // Vẽ quả
         gotoxy(Qua.x, Qua.y);
         cout << "*";
-    
+
         // Ghi điểm ở góc
         gotoxy(1, 1);
         cout << "Diem: " << DoDai - 3;
@@ -83,17 +83,6 @@ void VeKhung() {
         }
     }
 }
-void Ve(Point Qua){
-        gotoxy(A[0].x,A[0].y);
-            cout<<"O";                         //vẽ đầu rắn trước
-        for (int i = 1; i < DoDai; i++){
-            gotoxy(A[i].x,A[i].y);
-            cout<<"x";                          //vẽ thân rắn
-        }
-        gotoxy(Qua.x, Qua.y); cout<<"*";
-        gotoxy( 1,1);
-         cout<<"Diem : ";                            //di chuyển con trỏ về tọa độ (1;1) để ghi điểm 
-    }
 
 bool RanDungTuong(const Point& dauRan) {
     return (dauRan.x <= MINX || dauRan.x >= MAXX || dauRan.y <= MINY || dauRan.y >= MAXY);
@@ -138,7 +127,7 @@ int main() {
             cout << "Game Over! Ran da dung tuong.";
             break;
         }
-        
+
         Sleep(300);
     }
 
