@@ -77,6 +77,14 @@ void VeKhung() {
 bool RanDungTuong(const Point& dauRan) {
     return (dauRan.x <= MINX || dauRan.x >= MAXX || dauRan.y <= MINY || dauRan.y >= MAXY);
 }
+bool RanCanThan(const CONRAN& r) {
+    for (int i = 1; i < r.DoDai; i++) {
+        if (r.A[0].x == r.A[i].x && r.A[0].y == r.A[i].y) {
+            return true; // Đầu rắn trùng vị trí với thân
+        }
+    }
+    return false;
+}
 
 // Hàm chính
 int main() {
@@ -110,6 +118,13 @@ int main() {
         system("cls");
         r.Ve(Qua);
         r.DiChuyen(Huong, Qua);
+        
+        if (RanCanThan(r)) {
+            gotoxy(10, MAXY + 2);
+            cout << "Game Over! Ran da can than.";
+            break;
+}
+
         VeKhung();
 
         if (RanDungTuong(r.A[0])) {
@@ -117,7 +132,6 @@ int main() {
             cout << "Game Over! Ran da dung tuong.";
             break;
         }
-        
         Sleep(300);
     }
 
