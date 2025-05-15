@@ -46,9 +46,12 @@ public:
         gotoxy(Qua.x, Qua.y);
         cout << "*";
 
-        // Ghi điểm ở góc
-        gotoxy(1, 1);
-        cout << "Diem: " << DoDai - 3;
+
+
+
+        gotoxy(15,1);                                   
+        cout<<"DIEM : "<<DoDai-3;                   //Hiển thị điểm số người chơi = độ dài hiện tại - độ dài ban đầu.
+
     }
 
     void DiChuyen(int Huong, Point& Qua) {
@@ -66,8 +69,8 @@ public:
         // Ăn quả
         if (A[0].x == Qua.x && A[0].y == Qua.y) {
             DoDai++;
-            Qua.x = rand() % (MAXX - MINX) + MINX;
-            Qua.y = rand() % (MAXY - MINY) + MINY;
+            Qua.x = rand() % (MAXX - MINX-4) + MINX+2;              //Vị trí random sẽ nằm trong khung. và cách khung ít nhất 1 dòng (cột). 
+            Qua.y = rand() % (MAXY - MINY-4) + MINY+2;
         }
     }
 };
@@ -87,7 +90,34 @@ void VeKhung() {
 bool RanDungTuong(const Point& dauRan) {
     return (dauRan.x <= MINX || dauRan.x >= MAXX || dauRan.y <= MINY || dauRan.y >= MAXY);
 }
+bool RanCanThan(const CONRAN& r) {
+    for (int i = 1; i < r.DoDai; i++) {
+        if (r.A[0].x == r.A[i].x && r.A[0].y == r.A[i].y) {
+            return true; // Đầu rắn trùng vị trí với thân
+        }
+    }
+    return false;
+}
+void welcome()
+{
+    gotoxy(5,2);
+    cout<<"DO AN CUOI KY - MON KY NANG NGHE NGHIEP";
+    gotoxy(15,4);
+    cout<<"GAME SNAKE";
+    gotoxy(11,8);
+    cout<<"NHOM 5: Vo Truong Phuc";
+    gotoxy(19,9);
+    cout<<"Pham Tran Tien Phat";
+    gotoxy(19,10);
+    cout<<"Vo Xuan Huu";
+    gotoxy(19,11);
+    cout<<"Pham Van Hieu";
+    gotoxy(19,12);
+    cout<<"Pham Duc Hai";
+    Sleep(5000);
+    system("cls");
 
+}
 // Hàm chính
 int main() {
     CONRAN r;
@@ -98,29 +128,44 @@ int main() {
     srand((int)time(0));
     Qua.x = rand() % (MAXX - MINX) + MINX;
     Qua.y = rand() % (MAXY - MINY) + MINY;
-
+    welcome();
+    VeKhung();               //đặt hàm vẽ khung ra ngoài vòng lặp While(1), chỉ vẽ khung 1 lần duy nhất.
     while (1) {
         if (kbhit()) {
+            int HuongCu = Huong;
             t = getch();
+
             if (t == -32 || t == 224) { // Phím mũi tên
-                t = getch();
-                if (t == 75 ) Huong = 2; // Trái
+                t = getch(); // Lấy mã phím thực
+                if (t == 75) Huong = 2; // Trái
                 if (t == 72) Huong = 3; // Lên
                 if (t == 77) Huong = 0; // Phải
                 if (t == 80) Huong = 1; // Xuống
-            } else {
-                // Phím thường
-                if (t == 'a' || t == 'A') Huong = 2;
-                if (t == 'w' || t == 'W') Huong = 3;
-                if (t == 'd' || t == 'D') Huong = 0;
-                if (t == 's' || t == 'S') Huong = 1;
+            } else { // Phím thường
+                if (t == 'a') Huong = 2;
+                if (t == 'w') Huong = 3;
+                if (t == 'd') Huong = 0;
+                if (t == 's') Huong = 1;
             }
+
+            // Ngăn không cho quay ngược đầu
+            if (abs(HuongCu - Huong) == 2)
+                Huong = HuongCu;
         }
 
-        system("cls");
-        r.Ve(Qua);
-        r.DiChuyen(Huong, Qua);
-        VeKhung();
+
+        for (int i = 0; i < r.DoDai; i++)           // xóa rắn bằng cách thay thế thành ký tự khoảng trắng " " 
+        {
+            gotoxy(r.A[i].x, r.A[i].y);
+            cout << " "; 
+        }
+        
+        r.DiChuyen(Huong, Qua);                       //đổi thử tự chạy hàm, cho hàm di chuyển chạy trước, vẽ chạy sau.
+        r.Ve(Qua);                                 // nếu để hàm vẽ chạy trước, sau khi xóa thân rắn, hàm vẽ nó lại vẽ lại toàn bộ những thứ đã xóa (giá trị cũ) . rồi hàm di chuyển tịnh tiến toàn bộ, nên con rắn đi để lại cái đuôi kéo dài.  
+        
+
+
+
 
         if (RanDungTuong(r.A[0])) {
             gotoxy(10, MAXY + 2);
