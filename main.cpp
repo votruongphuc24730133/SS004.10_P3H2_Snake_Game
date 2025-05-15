@@ -123,7 +123,7 @@ int main() {
             gotoxy(10, MAXY + 2);
             cout << "Game Over! Ran da can than.";
             break;
-}
+} 
 
         VeKhung();
 
