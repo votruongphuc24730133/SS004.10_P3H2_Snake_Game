@@ -87,7 +87,26 @@ bool RanCanThan(const CONRAN& r) {
     }
     return false;
 }
+void welcome()
+{
+    gotoxy(5,2);
+    cout<<"DO AN CUOI KY - MON KY NANG NGHE NGHIEP";
+    gotoxy(15,4);
+    cout<<"GAME SNAKE";
+    gotoxy(11,8);
+    cout<<"NHOM 5: Vo Truong Phuc";
+    gotoxy(19,9);
+    cout<<"Pham Tran Tien Phat";
+    gotoxy(19,10);
+    cout<<"Vo Xuan Huu";
+    gotoxy(19,11);
+    cout<<"Pham Van Hieu";
+    gotoxy(19,12);
+    cout<<"Pham Duc Hai";
+    Sleep(5000);
+    system("cls");
 
+}
 // Hàm chính
 int main() {
     CONRAN r;
@@ -98,6 +117,7 @@ int main() {
     srand((int)time(0));
     Qua.x = rand() % (MAXX - MINX) + MINX;
     Qua.y = rand() % (MAXY - MINY) + MINY;
+    welcome();
     VeKhung();               //đặt hàm vẽ khung ra ngoài vòng lặp While(1), chỉ vẽ khung 1 lần duy nhất.
     while (1) {
         if (kbhit()) {
