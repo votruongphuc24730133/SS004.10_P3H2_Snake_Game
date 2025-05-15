@@ -32,15 +32,26 @@ public:
     }
 
     void Ve(Point Qua) {
-        for (int i = 0; i < DoDai; i++) {
+        // Vẽ đầu rắn
+        gotoxy(A[0].x, A[0].y);
+        cout << "O";  // Dùng ký tự O để làm đầu rắn
+
+        // Vẽ thân rắn
+        for (int i = 1; i < DoDai; i++) {
             gotoxy(A[i].x, A[i].y);
-            cout << "X";
+            cout << "x";  // Ký tự cho thân rắn
         }
 
+        // Vẽ quả
         gotoxy(Qua.x, Qua.y);
         cout << "*";
+
+
+
+
         gotoxy(15,1);                                   
         cout<<"DIEM : "<<DoDai-3;                   //Hiển thị điểm số người chơi = độ dài hiện tại - độ dài ban đầu.
+
     }
 
     void DiChuyen(int Huong, Point& Qua) {
@@ -161,6 +172,7 @@ int main() {
             cout << "Game Over! Ran da dung tuong.";
             break;
         }
+
         Sleep(300);
     }
 
