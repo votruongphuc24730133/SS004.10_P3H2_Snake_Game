@@ -118,12 +118,6 @@ int main() {
         system("cls");
         r.Ve(Qua);
         r.DiChuyen(Huong, Qua);
-        
-        if (RanCanThan(r)) {
-            gotoxy(10, MAXY + 2);
-            cout << "Game Over! Ran da can than.";
-            break;
-}
 
         VeKhung();
 
