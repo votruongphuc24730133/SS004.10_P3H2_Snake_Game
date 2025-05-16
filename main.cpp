@@ -117,24 +117,24 @@ int main() {
 
         system("cls");
 
-        r.DiChuyen(Huong, Qua);
+       r.DiChuyen(Huong, Qua);
 
-        // Kiểm tra va chạm thân
-        if (RanCanThan(r)) {
-            gotoxy(10, MAXY + 2);
-            cout << "Game Over! Ran da can than.";
-            break;
-        }
+            // Kiểm tra va chạm thân (chỉ kiểm tra khi rắn dài >= 4)
+            if (r.DoDai >= 4 && RanCanThan(r)) {
+                gotoxy(10, MAXY + 2);
+                cout << "Game Over! Ran da can than.";
+                break;
+            }
 
-        // Kiểm tra va chạm tường
-        if (RanDungTuong(r.A[0])) {
-            gotoxy(10, MAXY + 2);
-            cout << "Game Over! Ran da dung tuong.";
-            break;
-        }
+            // Kiểm tra va chạm tường
+            if (RanDungTuong(r.A[0])) {
+                gotoxy(10, MAXY + 2);
+                cout << "Game Over! Ran da dung tuong.";
+                break;
+            }
 
-        // Vẽ rắn và quả
-        r.Ve(Qua);
+            // Vẽ rắn và quả
+            r.Ve(Qua);
 
         Sleep(300);
     }
