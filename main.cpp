@@ -153,7 +153,6 @@ int main() {
                 Huong = HuongCu;
         }
 
-
         for (int i = 0; i < r.DoDai; i++)           // xóa rắn bằng cách thay thế thành ký tự khoảng trắng " " 
         {
             gotoxy(r.A[i].x, r.A[i].y);
@@ -164,7 +163,12 @@ int main() {
         r.Ve(Qua);                                 // nếu để hàm vẽ chạy trước, sau khi xóa thân rắn, hàm vẽ nó lại vẽ lại toàn bộ những thứ đã xóa (giá trị cũ) . rồi hàm di chuyển tịnh tiến toàn bộ, nên con rắn đi để lại cái đuôi kéo dài.  
         
 
-
+        // Kiểm tra va chạm thân (chỉ kiểm tra khi rắn dài >= 4)
+        if (r.DoDai >= 4 && RanCanThan(r)) {
+            gotoxy(10, MAXY + 2);
+            cout << "Game Over! Ran da can than.";
+            break;
+        }
 
 
         if (RanDungTuong(r.A[0])) {
@@ -172,7 +176,6 @@ int main() {
             cout << "Game Over! Ran da dung tuong.";
             break;
         }
-
         Sleep(300);
     }
 
